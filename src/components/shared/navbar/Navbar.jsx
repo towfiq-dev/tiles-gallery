@@ -1,13 +1,28 @@
 'use client'
-
+import React, { useState } from 'react';
 import ActiveNav from './ActiveNav';
 import Image from 'next/image';
 import NavLogo from '../../../assets/asset/user.png'
-
+import { authClient } from '@/lib/auth-client';
+import { toast } from 'react-toastify';
 import Link from 'next/link';
 
 const Navbar = () => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isProfileOpen, setIsProfileOpen] = useState(false);
+    
+    const { data: session, isPending } = authClient.useSession();
+    const user = session?.user;
 
+    const handleSignOut = async () => {
+        await authClient.signOut({
+            fetchOptions: {
+                onSuccess: () => {
+                    toast.success('Log Out Successfully');
+                }
+            }
+        });
+    };
 
     const links = (
         <>

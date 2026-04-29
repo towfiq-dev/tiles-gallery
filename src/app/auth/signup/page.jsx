@@ -2,11 +2,43 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-
+import { authClient } from '@/lib/auth-client';
+import { toast } from 'react-toastify';
+import { useForm } from 'react-hook-form';
+import { useRouter } from 'next/navigation';
+import { GrGoogle } from 'react-icons/gr';
 
 const SignUpPage = () => {
-    const [showPassword, setShowPassword] = useState(false);
+    const handleGoogleSignUp= async()=>{
+    const data = await authClient.signIn.social({
+        provider: "google",
+        })
+    //     if (data) {
+    // toast.success('Congratulations! You have successfully signed up.')
+    // }else{
+    // toast.error("Something went wrong. Please try again.")
+    // }
 
+    }
+    const [showPassword, setShowPassword] = useState(false);
+    const router = useRouter()
+    const {register, handleSubmit, formState: { errors },} = useForm()
+    const onSubmit = async(data)=>{
+    const {email, name, photo, password } = data
+    const {data: res, error} = await authClient.signUp.email({
+        name: name,
+        image: photo,
+        email: email,
+        password: password
+    })
+    if (res) {
+    toast.success(`Congratulations ${name}! You have successfully signed up.`);
+    router.push('/auth/signin')
+  }else if (error) {
+    toast.error(error.message || "Something went wrong. Please try again.");
+  }
+    
+    }
 return (
         <div className="min-h-screen bg-[#F3F3F3] flex justify-center items-center p-4">
             <div className="bg-white w-full max-w-[600px] p-8 md:p-14 rounded-lg shadow-sm">
@@ -89,7 +121,11 @@ return (
                         </button>
                     </div>
                 </form>
+                <p className="text-center text-[17px] font-semibold mt-5">Or</p>
 
+      <button onClick={handleGoogleSignUp} className='w-full btn text-[18px] mt-5'><GrGoogle/> 
+      Sign Up With Google
+      </button>
                 <p className="text-center mt-6 text-sm font-semibold text-[#706F6F]">
                     Already Have An Account? <Link href="/auth/signin" className="text-[#F75B5F] hover:underline">Login</Link>
                 </p>

@@ -12,7 +12,10 @@ const ActiveNav = ({children, href, className}) => {
       <Link 
         href={href} 
         className={`inline-block border-2 font-semibold border-gray-300 rounded-lg px-4 py-2 shadow-sm transition-all duration-200
-        ${className} ${isActive ? 'bg-green-400 border-green-500 text-white' : 'hover:bg-gray-50'}`}
+        ${className} 
+        ${isActive ? 
+          'bg-green-400 border-green-500 text-white' : 
+          'hover:bg-gray-50'}`}
       >
         {children}
       </Link>

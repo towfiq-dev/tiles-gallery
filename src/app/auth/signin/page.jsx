@@ -2,11 +2,41 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { useRouter } from 'next/navigation';
+import { useForm } from 'react-hook-form';
+import { authClient } from '@/lib/auth-client';
+import { toast } from 'react-toastify';
+import { GrGoogle } from 'react-icons/gr';
 
+const SignInPage = () => {
+    const handleGoogleSignIn= async()=>{
+        const data = await authClient.signIn.social({
+            provider: "google",
+            })
+        //     if (data) {
+        // toast.success('Congratulations! You have successfully signed in.')
+        // }else{
+        // toast.error("Something went wrong. Please try again.")
+        // }
 
-const Login = () => {
+        }
     const [showPassword, setShowPassword] = useState(false);
-
+    const router = useRouter()
+        const {register, handleSubmit, formState: { errors },} = useForm()
+        const onSubmit = async(data)=>{
+        const {email, password } = data
+        const {data: res, error} = await authClient.signIn.email({
+            email: email,
+            password: password
+        })
+        if (res) {
+        toast.success(`Congratulations! You have successfully signed in.`);
+        router.push('/')
+      }else if (error) {
+        toast.error(error.message || "Something went wrong. Please try again.");
+      }
+        
+        }
     return (
         <div className="min-h-screen bg-[#F3F3F3] flex justify-center items-center p-4">
             <div className="bg-white w-full max-w-[600px] p-8 md:p-14 rounded-lg shadow-sm">
@@ -22,7 +52,7 @@ const Login = () => {
                             {...register("email", { required: true })}
                             placeholder="Enter your email address" 
                             className="w-full bg-[#F3F3F3] border-none p-4 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-400" 
-                           
+                        
                         />
                         <p>{errors.email && <small className='text-red-500'>This field is required</small>}</p>
                     </div>
@@ -53,7 +83,11 @@ const Login = () => {
                         </button>
                     </div>
                 </form>
-
+                                <p className="text-center text-[17px] font-semibold mt-5">Or</p>
+                
+                      <button className='w-full btn text-[18px] mt-5' onClick={handleGoogleSignIn}><GrGoogle/> 
+                      Sign In With Google
+                      </button>
                 <p className="text-center mt-6 text-sm font-semibold text-[#706F6F]">
                     Dont Have An Account? <Link href="/auth/signup" className="text-[#F75B5F] hover:underline">Register</Link>
                 </p>
@@ -62,4 +96,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default SignInPage;
