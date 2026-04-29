@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import ActiveNav from './ActiveNav';
 import Image from 'next/image';
 import NavLogo from '../../../assets/asset/user.png'
+import LOGO from '../../../assets/asset/image.png'
 import { authClient } from '@/lib/auth-client';
 import { toast } from 'react-toastify';
 import Link from 'next/link';
@@ -57,7 +58,8 @@ const Navbar = () => {
                     </button>
                     
                     <Link href="/" className="text-xl font-bold tracking-tighter text-blue-600">
-                        MY<span className="text-gray-800">NEWS</span>
+                    <Image src={LOGO} className='w-16 h-16 rounded-full' alt='Logo'/>
+                        {/* TILES<span className="text-gray-800"> GALLERY</span> */}
                     </Link>
                 </div>
 
@@ -82,7 +84,7 @@ const Navbar = () => {
                                         height={40} 
                                         src={user.image || NavLogo} 
                                         alt={user.name || "User"} 
-                                        className="object-cover w-full h-full"
+                                        className="object-cover cursor-pointer w-full h-full"
                                     />
                                 </div>
                             </button>
