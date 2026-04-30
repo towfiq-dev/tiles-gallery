@@ -6,14 +6,14 @@ const TilesCard = ({ tiles }) => {
   return (
     <div className="group relative bg-white dark:bg-gray-800 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 overflow-hidden">
       
-      {/* Badge: New Arrival */}
+
       {tiles.isNew && (
         <span className="absolute top-3 left-3 z-10 bg-blue-600 text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wider">
           New
         </span>
       )}
 
-      {/* Image Container */}
+
       <div className="relative h-56 w-full overflow-hidden">
         <Image
           className="object-cover group-hover:scale-110 transition-transform duration-500"
@@ -23,11 +23,11 @@ const TilesCard = ({ tiles }) => {
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
         />
-        {/* Overlay on Hover */}
+
         <div className="absolute inset-0 bg-black/5 group-hover:bg-black/0 transition-colors duration-300" />
       </div>
 
-      {/* Content */}
+
       <div className="p-5">
         <div className="flex justify-between items-start mb-2">
           <p className="text-xs font-medium text-blue-600 uppercase tracking-wide">{tiles.category}</p>
