@@ -3,16 +3,30 @@ import Link from "next/link";
 const Footer = () => {
   return (
     <footer className="footer sm:footer-horizontal bg-base-200 text-base-content p-10">
-  <aside>
+<div>
+    <aside>
                         <Link href="/" className="text-[30px] mb-3 font-bold tracking-tighter text-blue-600">
                         TILES<span className="text-gray-800"> GALLERY</span>
                     </Link>
-    <p className="mb-1.5">
-      TILES Industries Ltd.
+    <p className="mb-1.5 mt-1.5 space-y-2">
+      <small className="text-[15px]">TILES Industries Ltd.</small>
       <br />
-      Providing reliable tech since 1992
+      <small className="text-[15px]">Providing reliable tech since 1992</small>
     </p>
   </aside>
+  <form>
+    <fieldset className="w-80">
+      <label className="text-[16px]">Enter your email address</label>
+      <div className="join mt-1">
+        <input
+          type="text"
+          placeholder="Enter your email address"
+          className="input input-bordered join-item" />
+        <button className="btn btn-primary join-item">Subscribe</button>
+      </div>
+    </fieldset>
+  </form>
+</div>
   <nav>
     <h6 className="footer-title">Services</h6>
     <a className="link link-hover">Branding</a>

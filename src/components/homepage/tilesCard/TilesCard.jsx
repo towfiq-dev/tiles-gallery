@@ -55,8 +55,8 @@ const TilesCard = ({ tiles }) => {
           <p className="text-xs text-gray-400 italic">{tiles.dimensions}</p>
         </div>
 
-        <Link href={`/Details/${tiles.id}`} className="block mt-5">
-          <button className="w-full bg-gray-900 dark:bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 dark:hover:bg-blue-500 transition-colors duration-300 shadow-md">
+        <Link href={`/allNavs/allTiles/${tiles.id}`} className="block mt-5">
+          <button className="w-full bg-gray-900 dark:bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 dark:hover:bg-blue-500 transition-colors cursor-pointer duration-300 shadow-md">
             View Details
           </button>
         </Link>

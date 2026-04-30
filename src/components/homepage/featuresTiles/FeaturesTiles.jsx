@@ -1,14 +1,7 @@
 import React from 'react';
 import TilesCard from '../tilesCard/TilesCard';
 import Link from 'next/link';
-
-const getFeaturesTiles = async () => {
-  const res = await fetch('https://assignment-json-server.onrender.com/allTiles', {
-    next: { revalidate: 3600 }
-  });
-  if (!res.ok) return [];
-  return res.json();
-}
+import { getFeaturesTiles } from '@/lib/dataFetch';
 
 const FeaturesTiles = async () => {
   const allFeaturesTiles = await getFeaturesTiles();
@@ -17,7 +10,7 @@ const FeaturesTiles = async () => {
     <section className="max-w-7xl mx-auto px-4 py-16">
       <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-4">
         <div>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-black">
             Featured <span className="text-blue-600">Collection</span>
           </h2>
           <p className="text-gray-500 mt-2">Premium quality tiles for your dream space.</p>
