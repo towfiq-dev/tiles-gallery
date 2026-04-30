@@ -4,6 +4,7 @@ import Image from 'next/image';
 import React from 'react';
 import defaultUser from '../../../assets/asset/user.png' 
 import UpdateUserProfile from '@/components/homepage/updateUserProfile/UpdateUserProfile';
+import { redirect } from 'next/navigation';
 
 const ProfilePage = () => {
   const userData = authClient.useSession()
@@ -13,7 +14,9 @@ const ProfilePage = () => {
     return <div className="h-16 flex items-center justify-center bg-white/80 backdrop-blur-md shadow-sm border-b mt-4 rounded-xl mx-4">
                 <div className="animate-spin rounded-full h-6 w-6 border-t-2 border-b-2 border-blue-600"></div>
             </div>
-
+    // if (!user) {
+    //   redirect('/auth/signin')
+    // }
   return (
     <div className="p-10 grid justify-center">
       <h1 className="text-2xl font-bold mb-4">Profile Page</h1>

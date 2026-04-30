@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
 import Link from 'next/link';
-import Card from '../../../assets/asset/card.jpg'
+//import Card from '../../../assets/asset/card.jpg'
 const TilesCard = ({ tiles }) => {
   return (
     <div className="group relative bg-white dark:bg-gray-800 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 overflow-hidden">
@@ -17,8 +17,8 @@ const TilesCard = ({ tiles }) => {
       <div className="relative h-56 w-full overflow-hidden">
         <Image
           className="object-cover group-hover:scale-110 transition-transform duration-500"
-          src={Card}
-          //src={tiles.image || "/placeholder.png"}
+          //src={Card}
+          src={tiles.image || "/placeholder.png"}
           alt={tiles.title}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"

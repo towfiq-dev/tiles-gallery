@@ -13,9 +13,52 @@ const nextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'www.porcelainsuperstore.co.uk',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.finntiles.com.au',
+      },
+      {
+        protocol: 'https',
+        hostname: 'ceramicconnection.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.jdmagicbox.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'thumbs.dreamstime.com',
+      },
+      {
+        protocol: 'https',
         hostname: 'encrypted-tbn0.gstatic.com',
-        pathname: '/**',
-      }
+      },
+      {
+        protocol: 'https',
+        hostname: 'c8.alamy.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.tileclub.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'tilemart.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'luxurytiles.co.uk',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.keramics.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.freepik.com',
+      },
     ],
   },
 };
